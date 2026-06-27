@@ -20,17 +20,16 @@
             padding: 0;
             font-family: 'Segoe UI', system-ui, sans-serif;
         }
-        /* Locks layout to a single screen, eliminating vertical scroll bars */
         
         body {
             color: var(--dark);
             background: linear-gradient(180deg, var(--bg-light) 0%, var(--light) 100%);
             line-height: 1.5;
-            overflow: hidden;
             display: flex;
             flex-direction: column;
-            height: 100vh;
+            min-height: 100vh;
             width: 100vw;
+            overflow-x: hidden;
         }
         
         .container {
@@ -39,8 +38,8 @@
             padding: 0 24px;
             width: 100%;
         }
-        /* Navbar Area */
         
+        /* Navbar Area */
         nav {
             padding: 20px 0 10px 0;
             background: transparent;
@@ -58,14 +57,14 @@
             object-fit: contain;
             display: block;
         }
-        /* Hero Section Base - Uses flexible distribution to fit exact height */
         
+        /* Hero Section Base */
         header {
             flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px 0;
+            padding: 40px 0;
         }
         
         .hero {
@@ -73,14 +72,12 @@
             align-items: center;
             justify-content: space-between;
             gap: 40px;
-            flex-wrap: wrap;
             width: 100%;
         }
-        /* Text Container */
         
+        /* Text Container */
         .hero-text {
             flex: 1.2;
-            min-width: 320px;
         }
         
         .hero-text h1 {
@@ -102,8 +99,8 @@
             font-weight: 500;
             max-width: 540px;
         }
-        /* Platform Buttons */
         
+        /* Platform Buttons */
         .cta-buttons {
             display: flex;
             gap: 15px;
@@ -113,6 +110,7 @@
         .btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
             padding: 16px 32px;
             background: var(--primary);
@@ -139,11 +137,10 @@
         .btn-secondary:hover {
             background: #0f172a;
         }
-        /* Device Mockups Showcase Layout Area */
         
+        /* Device Mockups Showcase Layout Area */
         .hero-mockups {
             flex: 0.9;
-            min-width: 320px;
             display: flex;
             align-items: flex-end;
             justify-content: center;
@@ -160,6 +157,7 @@
             transform: rotate(-3deg);
             object-fit: cover;
             background: #fff;
+            flex-shrink: 0;
         }
         
         .mockup-desktop {
@@ -171,9 +169,10 @@
             transform: rotate(2deg);
             object-fit: cover;
             background: #fff;
+            flex-shrink: 0;
         }
-        /* Cleaned Structural Footer without Emojis or Dark Blots */
         
+        /* Structural Footer */
         footer {
             background: transparent;
             color: var(--text-gray);
@@ -181,6 +180,7 @@
             text-align: center;
             font-size: 0.95rem;
             border-top: 1px solid rgba(0, 0, 0, 0.05);
+            margin-top: auto;
         }
         
         footer p {
@@ -192,6 +192,79 @@
             color: var(--primary);
             font-weight: bold;
         }
+
+        /* Responsive Media Queries */
+        @media (max-width: 992px) {
+            body {
+                overflow-y: auto; /* Restores vertical scroll for smaller viewports */
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                gap: 50px;
+            }
+
+            .hero-text {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero-text p {
+                font-size: 1.1rem;
+                margin-bottom: 25px;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+            }
+
+            .hero-mockups {
+                width: 100%;
+                align-items: center;
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                width: 100%;
+                padding: 0 20px;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            /* Scales down mockups to fit comfortably on narrow screens */
+            .hero-mockups {
+                gap: 12px;
+            }
+
+            .mockup-phone {
+                width: 120px;
+                height: 240px;
+                border-width: 4px;
+                border-radius: 16px;
+            }
+
+            .mockup-desktop {
+                width: 200px;
+                height: 126px;
+                border-width: 4px;
+                border-radius: 8px;
+            }
+        }
     </style>
 </head>
 
@@ -200,7 +273,6 @@
     <!-- Navigation Header Area -->
     <nav>
         <div class="container nav-container">
-            <!-- FIXED Case Sensitive Source Extensions -->
             <img src="logo.png" alt="H Water Logo" class="logo-img">
         </div>
     </nav>
@@ -212,14 +284,12 @@
                 <h1>Forget to hydrate?<br><span>H Water</span> doesn't!</h1>
                 <p>The aggressively simple hydration system that locks onto your phone and desktop to ensure you never run on empty again.</p>
                 <div class="cta-buttons">
-                    <!-- FIXED Download Target URL Parameters -->
                     <a href="https://www.mediafire.com/file/ncf0cr7v3smrthp/h_water_arm64.apk/file" class="btn" target="_blank">Get on Android</a>
                     <a href="http://www.mediafire.com/file/jkgz8pt0xhcdn7v/h_water_windows.zip" class="btn btn-secondary" target="_blank">Install on Windows</a>
                 </div>
             </div>
 
             <div class="hero-mockups">
-                <!-- FIXED Case Sensitive Source Extensions -->
                 <img src="MOBILE.png" alt="H Water Mobile Interface" class="mockup-phone">
                 <img src="WINDOWS.png" alt="H Water Windows Interface" class="mockup-desktop">
             </div>
