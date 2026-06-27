@@ -8,10 +8,10 @@
     <style>
          :root {
             --primary: #0070F3;
-            --accent: #79FFE1;
-            --dark: #0F172A;
-            --light: #F0F7FF;
-            --text: #334155;
+            --dark: #1E293B;
+            --light: #ffffff;
+            --bg-light: #F0F7FF;
+            --text-gray: #475569;
         }
         
         * {
@@ -20,28 +20,30 @@
             padding: 0;
             font-family: 'Segoe UI', system-ui, sans-serif;
         }
+        /* Locks layout to a single screen, eliminating vertical scroll bars */
         
         body {
             color: var(--dark);
-            background: #ffffff;
+            background: linear-gradient(180deg, var(--bg-light) 0%, var(--light) 100%);
             line-height: 1.5;
-            overflow-x: hidden;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
+            height: 100vh;
+            width: 100vw;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
             width: 100%;
         }
-        /* Navbar / Logo Area */
+        /* Navbar Area */
         
         nav {
-            padding: 25px 0 10px 0;
-            background: var(--light);
+            padding: 20px 0 10px 0;
+            background: transparent;
         }
         
         .nav-container {
@@ -56,22 +58,25 @@
             object-fit: contain;
             display: block;
         }
-        /* Hero Section */
+        /* Hero Section Base - Uses flexible distribution to fit exact height */
         
         header {
-            padding: 50px 0 80px 0;
-            background: linear-gradient(180deg, var(--light) 0%, #ffffff 100%);
             flex: 1;
             display: flex;
             align-items: center;
+            justify-content: center;
+            padding: 20px 0;
         }
         
         .hero {
             display: flex;
             align-items: center;
+            justify-content: space-between;
             gap: 40px;
             flex-wrap: wrap;
+            width: 100%;
         }
+        /* Text Container */
         
         .hero-text {
             flex: 1.2;
@@ -91,12 +96,13 @@
         }
         
         .hero-text p {
-            font-size: 1.3rem;
-            color: var(--text);
+            font-size: 1.25rem;
+            color: var(--text-gray);
             margin-bottom: 35px;
             font-weight: 500;
+            max-width: 540px;
         }
-        /* Funky CTA Buttons */
+        /* Platform Buttons */
         
         .cta-buttons {
             display: flex;
@@ -108,83 +114,82 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 16px 28px;
+            padding: 16px 32px;
             background: var(--primary);
-            color: white;
+            color: var(--light);
             text-decoration: none;
             border-radius: 50px;
             font-weight: bold;
             font-size: 1.1rem;
-            box-shadow: 0 4px 14px rgba(0, 112, 243, 0.3);
+            box-shadow: 0 4px 14px rgba(0, 112, 243, 0.25);
             transition: transform 0.2s, box-shadow 0.2s;
         }
         
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 112, 243, 0.4);
+            box-shadow: 0 6px 20px rgba(0, 112, 243, 0.35);
         }
         
         .btn-secondary {
             background: var(--dark);
-            color: white;
-            box-shadow: 0 4px 14px rgba(15, 23, 42, 0.2);
+            color: var(--light);
+            box-shadow: 0 4px 14px rgba(30, 41, 59, 0.15);
         }
         
         .btn-secondary:hover {
-            box-shadow: 0 6px 20px rgba(15, 23, 42, 0.3);
+            background: #0f172a;
         }
-        /* Dual Mockups Showcase */
+        /* Device Mockups Showcase Layout Area */
         
         .hero-mockups {
-            flex: 1;
+            flex: 0.9;
             min-width: 320px;
             display: flex;
             align-items: flex-end;
             justify-content: center;
-            gap: 20px;
+            gap: 24px;
             position: relative;
         }
         
         .mockup-phone {
-            width: 180px;
-            height: 360px;
+            width: 175px;
+            height: 350px;
             border-radius: 24px;
             border: 6px solid var(--dark);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-            z-index: 2;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             transform: rotate(-3deg);
             object-fit: cover;
             background: #fff;
         }
         
         .mockup-desktop {
-            width: 320px;
-            height: 200px;
+            width: 310px;
+            height: 195px;
             border-radius: 12px;
             border: 6px solid var(--dark);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            z-index: 1;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
             transform: rotate(2deg);
             object-fit: cover;
             background: #fff;
         }
-        /* Footer */
+        /* Cleaned Structural Footer without Emojis or Dark Blots */
         
         footer {
-            background: var(--dark);
-            color: #ffffff;
-            padding: 30px 0;
+            background: transparent;
+            color: var(--text-gray);
+            padding: 25px 0;
             text-align: center;
-            font-size: 1rem;
+            font-size: 0.95rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
         }
         
         footer p {
             font-weight: 500;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
         }
         
         footer span {
-            color: var(--accent);
+            color: var(--primary);
             font-weight: bold;
         }
     </style>
@@ -192,26 +197,26 @@
 
 <body>
 
-    <!-- Navigation / Logo Bar -->
+    <!-- Navigation Header Area -->
     <nav>
         <div class="container nav-container">
             <img src="logo.png" alt="H Water Logo" class="logo-img">
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- App Overview Showcase Workspace Layout -->
     <header>
         <div class="container hero">
             <div class="hero-text">
-                <h1>Your brain forgets. <br><span>H Water</span> won't.</h1>
+                <h1>Forget to hydrate?<br><span>H Water</span> doesn't!</h1>
                 <p>The aggressively simple hydration system that locks onto your phone and desktop to ensure you never run on empty again.</p>
                 <div class="cta-buttons">
-                    <a href="#" class="btn">🤖 Get on Android</a>
-                    <a href="#" class="btn btn-secondary">🪟 Install on Windows</a>
+                    <!-- Links wired directly to your repository asset builds -->
+                    <a href="https://github.com" class="btn" target="_blank">Get on Android</a>
+                    <a href="https://github.com/haris-jahangir/H-Water-App-final" class="btn btn-secondary" target="_blank">Install on Windows</a>
                 </div>
             </div>
 
-            <!-- Dual Showcase Block -->
             <div class="hero-mockups">
                 <img src="mobile.png" alt="H Water Mobile Interface" class="mockup-phone">
                 <img src="windows.png" alt="H Water Windows Interface" class="mockup-desktop">
@@ -219,10 +224,10 @@
         </div>
     </header>
 
-    <!-- Clean Footer -->
+    <!-- Core Structural Footer Element Block -->
     <footer>
         <div class="container">
-            <p>Made with 💧 by <span>Haris Jahangir</span></p>
+            <p>Made by <span>Haris Jahangir</span></p>
         </div>
     </footer>
 
