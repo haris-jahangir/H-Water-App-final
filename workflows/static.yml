@@ -2,7 +2,7 @@ name: Deploy Webpage Subfolder to Pages
 
 on:
   push:
-    branches: ["master"] # Triggers deployment whenever you push to your master branch
+    branches: ["master"]
 
 permissions:
   contents: read
@@ -26,7 +26,7 @@ jobs:
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
 
-      # This target forces GitHub to compile only your 'webpage' subfolder
+      # CRITICAL FIX: The path property maps explicitly to your webpage subfolder location
       - name: Upload Static Webpage Artifact
         uses: actions/upload-pages-artifact@v3
         with:
